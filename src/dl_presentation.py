@@ -40,6 +40,7 @@ def dl_presentation(url: str):
             i += 1
             wget.download('{}/svg/{}'.format(url, i), out='{}/{}/'.format(out, 'svg'))
         except urllib.error.HTTPError:
+            i -= 1
             break
         
         print(' ' + str(i))
