@@ -25,7 +25,7 @@ def dl_presentation(url: str):
         return -1
 
     tmp = time.time()
-    out = str(tmp)
+    out = str(tmp) + '.tmp'
 
     os.mkdir(out)
     os.mkdir(out + '/svg')
@@ -34,27 +34,27 @@ def dl_presentation(url: str):
     # Merge .pdf files to one
     merger = PdfFileMerger()
     
-    i = 1
+    i = 0
     while True:
         try:
+            i += 1
             wget.download('{}/svg/{}'.format(url, i), out='{}/{}/'.format(out, 'svg'))
         except urllib.error.HTTPError:
             break
-
+        
         print(' ' + str(i))
         # Path to svg and pdf
         form = '{}/{}/{}'
-        svgFile = form.format(out, 'svg', i)
-        pdfFile = form.format(out, 'pdf', i)
+        svg = form.format(out, 'svg', i)
+        pdf = form.format(out, 'pdf', i)
         # Convert svg to pdf
-        cairosvg.svg2pdf(url = svgFile, write_to = pdfFile)
+        cairosvg.svg2pdf(url = svg, write_to = pdf)
         # Merge to final pdf
-        merger.append(pdfFile)
-        i += 1
+        merger.append(pdf)
 
-    if i != 1:
+    if i != 0:
         merger.write(('{}.pdf').format(tmp))
-        print("Final .pdf was created with {} pages.".format(i - 1))
+        print("Final .pdf was created with {} pages.".format(i))
     else:
         print("Download fail.")
 
