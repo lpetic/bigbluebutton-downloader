@@ -1,0 +1,12 @@
+Usage: [COMMAND] [OPTION]
+
+=====================================================
+
+NAME
+    presentation [URL]
+
+DESCRIPTION
+    Download a presentation from BigBlueButton sever.
+    The URL to provide is the current URL of the slide.
+
+=====================================================
