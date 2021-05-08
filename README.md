@@ -1,5 +1,6 @@
 # BigBlueButton Downloader
-A simple script to download users' presentations during a session.
+A simple script to download users' presentations during a session and records.
+
 This project is working fine with BigBlueButton 2.7.2 version.
 
 # Installation
@@ -32,7 +33,7 @@ DESCRIPTION
     The URL to provide is the URL of the video or audio.
 
     --shared-screen     Type of the video is a deskshare.
-    --presentation      Tyoe of the video is presentation with slides.
+    --presentation      Type of the video is presentation with slides.
 
 =====================================================
 ```
