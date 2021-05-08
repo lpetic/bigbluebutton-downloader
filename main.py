@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
 
 import sys
-from src.dl_presentation import dl_presentation
+from src.presentation import presentation
+from src.playback import playback
 
 def main():
-    if len(sys.argv) == 2 and sys.argv[1] == 'help':
+    if len(sys.argv) == 1 or sys.argv[1] == 'help':
         print(open('./docs/help.txt', 'r').read())
         return 0
 
-    if len(sys.argv) < 3: 
-        return -1
+    if sys.argv[1] == 'presentation' and len(sys.argv) == 3:
+        return presentation(sys.argv[2])
 
-    if sys.argv[1] == 'presentation':
-        return dl_presentation(sys.argv[2])
+    if sys.argv[1] == 'playback' and len(sys.argv) == 4:
+        return playback(sys.argv[2], sys.argv[3])
 
     return 0
 

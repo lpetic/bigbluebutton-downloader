@@ -23,7 +23,7 @@ def download_and_convert(url: str, i: int, out: str):
     cairosvg.svg2pdf(url = svg, write_to = pdf)
     return 0
 
-def dl_presentation(url: str):
+def presentation(url: str):
     if not validators.url(url):
         print("Not an url.")
         return -1
